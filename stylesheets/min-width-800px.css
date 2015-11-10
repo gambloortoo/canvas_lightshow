@@ -1,0 +1,6 @@
+/* CSS for 800+ px */
+
+.container {
+    margin : auto;
+    width  : 800px;
+}

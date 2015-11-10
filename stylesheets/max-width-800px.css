@@ -1,0 +1,6 @@
+/* CSS for 0 - 800px */
+
+.container {
+    margin : 0;
+    width  : 100%;
+}
