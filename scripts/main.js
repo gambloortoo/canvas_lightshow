@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     // Set up canvas and ratio
     var canvas    = document.getElementById("canvas");
@@ -18,20 +19,64 @@ $(document).ready(function () {
     // Initial call
     respondCanvas();
 
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame 
+            || window.webkitRequestAnimationFrame
+            || window.mozRequestAnimationFrame
+            || function (fn) { window.setTimeout(fn, 1000 / 60) };
+    })();
+
     /* ---------- Program Logic ---------- */
 
     function update() {
+        for (var i = 0; i < settings.trails; ++i) {
+            tendrils[i].update();
+        }
 
-        setTimeout(update, 1000 / 60);
+        window.setTimeout(update, 1000 / 60);
     }
 
     function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = 'rgba(8, 5, 16, 0.4)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.strokeStyle = 'hsla(' + Math.round(hue.update()) + ',' + settings.saturation + '%,' + settings.lightness + '%,0.5)';
+        ctx.lineWidth = 2;
 
+        for (var i = 0; i < settings.trails; ++i) {
+            tendrils[i].draw(ctx);
+        }
 
-        window.requestAnimationFrame(draw);
+        window.requestAnimFrame(draw);
     }
 
+    function reset(options) {
+        tendrils = [];
+
+        for (var i = 0; i < options.trails; ++i) {
+            tendrils.push(Tendril.create({
+                spring    : options.spring + 0.025 * (1 / options.trails),
+                friction  : options.friction,
+                dampening : options.dampening,
+                size      : options.size,
+            }));
+        }
+    }
+
+    function mousemove (event) {
+        var rect = canvas.getBoundingClientRect();
+        target.x = (event.clientX - rect.left) / (rect.right  - rect.left) * canvas.width;
+        target.y = (event.clientY - rect.top ) / (rect.bottom - rect.top ) * canvas.height;
+        //console.log(target.x + ', ' + target.y);
+    }
+
+    hue = Oscillator.create(settings);
+
+    canvas.addEventListener('mousemove', mousemove)
+    target.x = canvas.width  / 2;
+    target.y = canvas.height / 2;
+    reset(settings);
     update();
     draw();
 
