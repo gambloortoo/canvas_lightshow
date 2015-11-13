@@ -1,5 +1,4 @@
 var hue,
-    buffer,
     target   = {},
     tendrils = [];
 
@@ -7,11 +6,12 @@ var settings = {
     // Colors
     saturation : 90,
     lightness  : 50,
+    alpha      : 0.5,
 
     // Oscillator
     phase     : 0,
     offset    : 128,
-    frequency : 0.001,
+    frequency : 0.05,
     amplitude : 128,
 
     // Tendril
@@ -40,8 +40,9 @@ var Oscillator = Base.extend({
 
 var Tendril = Base.extend({
     init : function (options) {
-        this.spring    = options.spring + (Math.random() * 0.1) - 0.05;
-        this.friction  = options.friction + (Math.random() * 0.01) - 0.005; // handle settings.friction -> options.friction
+        this.spring    = options.spring   + (Math.random() * 0.1 ) - 0.05;
+        this.friction  = options.friction + (Math.random() * 0.01) - 0.005;
+        this.tension   = options.tension
         this.dampening = options.dampening;
         this.nodes     = [];
 
