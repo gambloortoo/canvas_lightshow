@@ -7,9 +7,10 @@ var settings = {
     saturation : 90,
     lightness  : 50,
     alpha      : 0.5,
+    glow       : true,
 
     // Oscillator
-    phase     : 0,
+    phase     : Math.random() * Math.PI * 2,
     offset    : 128,
     frequency : 0.05,
     amplitude : 128,
@@ -19,8 +20,8 @@ var settings = {
     tension   : 0.98,
     friction  : 0.5,
     dampening : 0.25,
-    trails    : 10,
-    size      : 60,
+    trails    : 20,
+    size      : 50,
 };
 
 var Oscillator = Base.extend({

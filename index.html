@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Canvas Base</title>
+        <title>Lightshow</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
         <link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="stylesheets/max-width-800px.css">
         <link rel="stylesheet" type="text/css" media="(min-width: 800px)" href="stylesheets/min-width-800px.css">
@@ -10,13 +10,64 @@
     <body>
         <section id="main">
             <header id="mast">
-                <h1>Canvas Base</header>
+                <h1>Lightshow</header>
             </header>
             <section id="canvas_wrap" class="container">
                 <canvas id="canvas" width="800px" height="500px"></canvas>
             </section>
+            <section id="controls" class="container">
+                <fieldset class="ctrl_fieldset">
+                    <legend>Oscillator Controls</legend>
+                    <div id="freq_controls" class="ctrl_group">
+                        <label for="freq_slider" class="slider_label">Frequency</label>
+                        <input id="freq_text" class="slider_text" type="text" value=".005" />
+                        <span class="slider_wrap">
+                            <input id="freq_slider" class="slider_ctrl" type="range" min="0.001" max=".1" step=".001" value=".005" list="freq_list" />
+                        </span>
+                        <datalist id="freq_list">
+                            <option>0.001</option>
+                            <option>0.005</option>
+                            <option>0.010</option>
+                            <option>0.050</option>
+                            <option>0.100</option>
+                        </datalist>
+                    </div>
+                    <div id="amp_controls" class="ctrl_group">
+                        <label for="amp_slider" class="slider_label">Amplitude</label>
+                        <input id="amp_text" class="slider_text" type="text" value="128" />
+                        <span class="slider_wrap">
+                            <input id="amp_slider" class="slider_ctrl" type="range" min="0" max="360" step="1" value="128" list="amp_list" />
+                        </span>
+                        <datalist id="amp_list">
+                            <option>0</option>
+                            <option>60</option>
+                            <option>120</option>
+                            <option>180</option>
+                            <option>240</option>
+                            <option>300</option>
+                            <option>360</option>
+                        </datalist>
+                    </div>
+                    <div id="offset_controls" class="ctrl_group">
+                        <label for="offset_slider" class="slider_label">Offset</label>
+                        <input id="offset_text" class="slider_text" type="text" value="128" />
+                        <span class="slider_wrap">
+                            <input id="offset_slider" class="slider_ctrl" type="range" min="0" max="360" step="1" value="128" list="offset_list" />
+                        </span>    
+                        <datalist id="offset_list">
+                            <option>0</option>
+                            <option>60</option>
+                            <option>120</option>
+                            <option>180</option>
+                            <option>240</option>
+                            <option>300</option>
+                            <option>360</option>
+                        </datalist>
+                    </div>
+                </fieldset>
+            </section>
             <footer id="tail">
-                <h1>Canvas Base</header>
+                <!-- <h1>Lightshow</header> -->
             </footer>
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
