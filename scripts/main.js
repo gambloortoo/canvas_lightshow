@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     function draw() {
         ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = 'rgba(8, 5, 16, 0.4)';
+        ctx.fillStyle = "black";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         if (settings.glow) {
             ctx.globalCompositeOperation = 'lighter';
@@ -74,11 +74,63 @@ $(document).ready(function () {
     }
 
 
-
-
-    // Event listeners
+    // ------ Event listeners ------
     canvas.addEventListener('mousemove', mousemove, false);
 
+    // Color Events
+    document.getElementById('sat_slider').addEventListener('change', function() {
+        var value = Number(this.value);
+        document.getElementById('sat_text').defaultValue = this.defaultValue   = value;
+        document.getElementById('sat_text').value        = settings.saturation = value;
+    }, false);
+
+    document.getElementById('sat_text').addEventListener('change', function() {
+        var value = Number(this.value);
+        if (typeof value === "number" && (0 <= value) && (value <= 100)) {
+            this.defaultValue = value;
+        } else {
+            value = Number(this.defaultValue);
+        }
+        document.getElementById('sat_slider').value = settings.saturation = value;
+        document.getElementById('sat_text').value   = value;
+    }, false);
+
+    document.getElementById('light_slider').addEventListener('change', function() {
+        var value = Number(this.value);
+        document.getElementById('light_text').defaultValue = this.defaultValue  = value;
+        document.getElementById('light_text').value        = settings.lightness = value;
+    }, false);
+
+    document.getElementById('light_text').addEventListener('change', function() {
+        var value = Number(this.value);
+        if (typeof value === "number" && (0 <= value) && (value <= 100)) {
+            this.defaultValue = value;
+        } else {
+            value = Number(this.defaultValue);
+        }
+        document.getElementById('light_slider').value = settings.lightness = value;
+        document.getElementById('light_text').value   = value;
+    }, false);
+
+    document.getElementById('alpha_slider').addEventListener('change', function() {
+        var value = Number(this.value);
+        document.getElementById('alpha_text').defaultValue = this.defaultValue  = value;
+        document.getElementById('alpha_text').value        = settings.alpha     = value;
+    }, false);
+
+    document.getElementById('alpha_text').addEventListener('change', function() {
+        var value = Number(this.value);
+        if (typeof value === "number" && (0 <= value) && (value <= 1)) {
+            this.defaultValue = value;
+        } else {
+            value = Number(this.defaultValue);
+        }
+        document.getElementById('alpha_slider').value = settings.alpha = value;
+        document.getElementById('alpha_text').value   = value;
+    }, false);
+
+
+    // Oscillator Events
     document.getElementById('freq_slider').addEventListener('change', function() {
         var value = Number(this.value);
         document.getElementById('freq_text').defaultValue = this.defaultValue = value;

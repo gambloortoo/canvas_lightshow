@@ -16,7 +16,55 @@
                 <canvas id="canvas" width="800px" height="500px"></canvas>
             </section>
             <section id="controls" class="container">
-                <fieldset class="ctrl_fieldset">
+                <fieldset id="color_fieldset" class="ctrl_fieldset">
+                    <legend>Color Controls</legend>
+                    <div id="sat_controls" class="ctrl_group">
+                        <label for="sat_slider" class="slider_label">Saturation</label>
+                        <input id="sat_text" class="slider_text" type="text" value="90" />
+                        <span class="slider_wrap">
+                            <input id="sat_slider" class="slider_ctrl" type="range" min="0" max="100" step="1" value="90" list="sat_list" />
+                        </span>
+                        <datalist id="sat_list">
+                            <option>0</option>
+                            <option>20</option>
+                            <option>40</option>
+                            <option>60</option>
+                            <option>80</option>
+                            <option>100</option>
+                        </datalist>
+                    </div>
+                    <div id="light_controls" class="ctrl_group">
+                        <label for="light_slider" class="slider_label">Lightness</label>
+                        <input id="light_text" class="slider_text" type="text" value="50" />
+                        <span class="slider_wrap">
+                            <input id="light_slider" class="slider_ctrl" type="range" min="0" max="100" step="1" value="50" list="light_list" />
+                        </span>
+                        <datalist id="light_list">
+                            <option>0</option>
+                            <option>20</option>
+                            <option>40</option>
+                            <option>60</option>
+                            <option>80</option>
+                            <option>100</option>
+                        </datalist>
+                    </div>
+                    <div id="alpha_controls" class="ctrl_group">
+                        <label for="alpha_slider" class="slider_label">Alpha</label>
+                        <input id="alpha_text" class="slider_text" type="text" value="0.5" />
+                        <span class="slider_wrap">
+                            <input id="alpha_slider" class="slider_ctrl" type="range" min="0" max="1" step=".001" value="0.5" list="alpha_list" />
+                        </span>    
+                        <datalist id="alpha_list">
+                            <option>0</option>
+                            <option>.20</option>
+                            <option>.40</option>
+                            <option>.60</option>
+                            <option>.80</option>
+                            <option>1.0</option>
+                        </datalist>
+                    </div>
+                </fieldset>
+                <fieldset id="oscil_fieldset" class="ctrl_fieldset">
                     <legend>Oscillator Controls</legend>
                     <div id="freq_controls" class="ctrl_group">
                         <label for="freq_slider" class="slider_label">Frequency</label>
@@ -28,7 +76,9 @@
                             <option>0.001</option>
                             <option>0.005</option>
                             <option>0.010</option>
+                            <option>0.025</option>
                             <option>0.050</option>
+                            <option>0.075</option>
                             <option>0.100</option>
                         </datalist>
                     </div>
