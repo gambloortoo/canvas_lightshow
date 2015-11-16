@@ -1,6 +1,6 @@
 var hue,
     target   = {},
-    tendrils = [];
+    threads = [];
 
 var settings = {
     // Colors
@@ -15,13 +15,15 @@ var settings = {
     frequency : 0.05,
     amplitude : 128,
 
-    // Tendril
-    spring    : 0.45,
-    tension   : 0.98,
-    friction  : 0.5,
-    dampening : 0.25,
+    // Thread
     trails    : 20,
     size      : 50,
+
+    // Physics
+    spring    : 0.45,
+    friction  : 0.1,
+    tension   : 0.02,
+    dampening : 0.75,
 };
 
 var Oscillator = Base.extend({
@@ -39,7 +41,7 @@ var Oscillator = Base.extend({
     },
 });
 
-var Tendril = Base.extend({
+var Thread = Base.extend({
     init : function (options) {
         this.spring    = options.spring   + (Math.random() * 0.1 ) - 0.05;
         this.friction  = options.friction + (Math.random() * 0.01) - 0.005;
@@ -55,7 +57,7 @@ var Tendril = Base.extend({
     update : function () {
         var spring = this.spring;
         var node   = this.nodes[0];
-        // console.log(node);
+
         node.vx += (target.x - node.x) * spring;
         node.vy += (target.y - node.y) * spring;
 
@@ -65,14 +67,14 @@ var Tendril = Base.extend({
                 var prev = this.nodes[i - 1];
                 node.vx += (prev.x - node.x) * spring;
                 node.vy += (prev.y - node.y) * spring;
-                node.vx += prev.vx * this.dampening;
-                node.vy += prev.vy * this.dampening;
+                node.vx += prev.vx * (1 - this.dampening);
+                node.vy += prev.vy * (1 - this.dampening);
             }
-            node.vx *= this.friction;
-            node.vy *= this.friction;
+            node.vx *= 1 - this.friction;
+            node.vy *= 1 - this.friction;
             node.x  += node.vx;
             node.y  += node.vy;
-            spring  *= this.tension;
+            spring  *= (1 - this.tension);
         }
 
     },

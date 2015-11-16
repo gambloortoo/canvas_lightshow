@@ -20,7 +20,7 @@
                     <legend>Color Controls</legend>
                     <div id="sat_controls" class="ctrl_group">
                         <label for="sat_slider" class="slider_label">Saturation</label>
-                        <input id="sat_text" class="slider_text" type="text" value="90" />
+                        <input id="sat_text" class="slider_text" type="text" value="90" maxlength="5" />
                         <span class="slider_wrap">
                             <input id="sat_slider" class="slider_ctrl" type="range" min="0" max="100" step="1" value="90" list="sat_list" />
                         </span>
@@ -35,7 +35,7 @@
                     </div>
                     <div id="light_controls" class="ctrl_group">
                         <label for="light_slider" class="slider_label">Lightness</label>
-                        <input id="light_text" class="slider_text" type="text" value="50" />
+                        <input id="light_text" class="slider_text" type="text" value="50" maxlength="5" />
                         <span class="slider_wrap">
                             <input id="light_slider" class="slider_ctrl" type="range" min="0" max="100" step="1" value="50" list="light_list" />
                         </span>
@@ -50,7 +50,7 @@
                     </div>
                     <div id="alpha_controls" class="ctrl_group">
                         <label for="alpha_slider" class="slider_label">Alpha</label>
-                        <input id="alpha_text" class="slider_text" type="text" value="0.5" />
+                        <input id="alpha_text" class="slider_text" type="text" value="0.5" maxlength="5" />
                         <span class="slider_wrap">
                             <input id="alpha_slider" class="slider_ctrl" type="range" min="0" max="1" step=".001" value="0.5" list="alpha_list" />
                         </span>    
@@ -68,7 +68,7 @@
                     <legend>Oscillator Controls</legend>
                     <div id="freq_controls" class="ctrl_group">
                         <label for="freq_slider" class="slider_label">Frequency</label>
-                        <input id="freq_text" class="slider_text" type="text" value=".005" />
+                        <input id="freq_text" class="slider_text" type="text" value=".005" maxlength="5" />
                         <span class="slider_wrap">
                             <input id="freq_slider" class="slider_ctrl" type="range" min="0.001" max=".1" step=".001" value=".005" list="freq_list" />
                         </span>
@@ -84,7 +84,7 @@
                     </div>
                     <div id="amp_controls" class="ctrl_group">
                         <label for="amp_slider" class="slider_label">Amplitude</label>
-                        <input id="amp_text" class="slider_text" type="text" value="128" />
+                        <input id="amp_text" class="slider_text" type="text" value="128" maxlength="5" />
                         <span class="slider_wrap">
                             <input id="amp_slider" class="slider_ctrl" type="range" min="0" max="360" step="1" value="128" list="amp_list" />
                         </span>
@@ -100,7 +100,7 @@
                     </div>
                     <div id="offset_controls" class="ctrl_group">
                         <label for="offset_slider" class="slider_label">Offset</label>
-                        <input id="offset_text" class="slider_text" type="text" value="128" />
+                        <input id="offset_text" class="slider_text" type="text" value="128" maxlength="5" />
                         <span class="slider_wrap">
                             <input id="offset_slider" class="slider_ctrl" type="range" min="0" max="360" step="1" value="128" list="offset_list" />
                         </span>    
@@ -112,6 +112,101 @@
                             <option>240</option>
                             <option>300</option>
                             <option>360</option>
+                        </datalist>
+                    </div>
+                </fieldset>
+                <fieldset id="thread_fieldset" class="ctrl_fieldset">
+                    <legend>Thread Controls</legend>
+                    <div id="trail_controls" class="ctrl_group">
+                        <label for="trail_slider" class="slider_label">Trails</label>
+                        <input id="trail_text" class="slider_text" type="text" value="20" maxlength="5" />
+                        <span class="slider_wrap">
+                            <input id="trail_slider" class="slider_ctrl" type="range" min="1" max="50" step="1" value="20" list="trail_list" />
+                        </span>
+                        <datalist id="trail_list">
+                            <option>1</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
+                        </datalist>
+                    </div>
+                    <div id="length_controls" class="ctrl_group">
+                        <label for="length_slider" class="slider_label">Length</label>
+                        <input id="length_text" class="slider_text" type="text" value="60" maxlength="5" />
+                        <span class="slider_wrap">
+                            <input id="length_slider" class="slider_ctrl" type="range" min="3" max="100" step="1" value="60" list="length_list" />
+                        </span>
+                        <datalist id="length_list">
+                            <option>3</option>
+                            <option>20</option>
+                            <option>40</option>
+                            <option>60</option>
+                            <option>80</option>
+                            <option>100</option>
+                        </datalist>
+                    </div>
+                </fieldset>
+                <fieldset id="physics_fieldset" class="ctrl_fieldset">
+                    <legend>Physics Controls</legend>
+                    <div id="spring_controls" class="ctrl_group">
+                        <label for="spring_slider" class="slider_label">Spring</label>
+                        <input id="spring_text" class="slider_text" type="text" value="0.45" maxlength="5" />
+                        <span class="slider_wrap">
+                            <input id="spring_slider" class="slider_ctrl" type="range" min=".01" max="1" step=".01" value=".45" list="spring_list" />
+                        </span>    
+                        <datalist id="spring_list">
+                            <option>0.01</option>
+                            <option>0.2</option>
+                            <option>0.4</option>
+                            <option>0.6</option>
+                            <option>0.8</option>
+                            <option>1.0</option>
+                        </datalist>
+                    </div>
+                    <div id="friction_controls" class="ctrl_group">
+                        <label for="friction_slider" class="slider_label">Friction</label>
+                        <input id="friction_text" class="slider_text" type="text" value="0.1" maxlength="5" />
+                        <span class="slider_wrap">
+                            <input id="friction_slider" class="slider_ctrl" type="range" min="0" max=".2" step=".01" value="0.1" list="friction_list" />
+                        </span>    
+                        <datalist id="friction_list">
+                            <option>0.0</option>
+                            <option>0.05</option>
+                            <option>0.1</option>
+                            <option>0.15</option>
+                            <option>0.2</option>
+                        </datalist>
+                    </div>
+                    <div id="tension_controls" class="ctrl_group">
+                        <label for="tension_slider" class="slider_label">Tension</label>
+                        <input id="tension_text" class="slider_text" type="text" value="0.02" maxlength="5" />
+                        <span class="slider_wrap">
+                            <input id="tension_slider" class="slider_ctrl" type="range" min="0.01" max="1.0" step=".01" value="0.02" list="tension_list" />
+                        </span>    
+                        <datalist id="tension_list">
+                            <option>0</option>
+                            <option>.20</option>
+                            <option>.40</option>
+                            <option>.60</option>
+                            <option>.80</option>
+                            <option>1.0</option>
+                        </datalist>
+                    </div>
+                    <div id="damp_controls" class="ctrl_group">
+                        <label for="damp_slider" class="slider_label">Dampening</label>
+                        <input id="damp_text" class="slider_text" type="text" value="0.75" maxlength="5" />
+                        <span class="slider_wrap">
+                            <input id="damp_slider" class="slider_ctrl" type="range" min="0.01" max="1.0" step=".01" value="0.75" list="damp_list" />
+                        </span>    
+                        <datalist id="damp_list">
+                            <option>0</option>
+                            <option>.20</option>
+                            <option>.40</option>
+                            <option>.60</option>
+                            <option>.80</option>
+                            <option>1.0</option>
                         </datalist>
                     </div>
                 </fieldset>
